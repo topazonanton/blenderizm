@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Blenderizm",
+  "description": "Professional 3D modeling, texturing, and photorealistic rendering portfolio of a 3D artist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

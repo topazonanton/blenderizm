@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: #0a0a0a;
+  --color-industrial-orange: #cc785c;
+  --color-printer-green: #4ade80;
+  --color-surface-dark: #131313;
+  --color-surface-card: #1a1a1a;
+  --color-surface-container: #201f1f;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #dac1ba;
+  --color-primary-accent: #ffb59d;
+  --color-secondary-accent: #4de082;
+  --color-tertiary-accent: #77d7ca;
+}
+
+html, body {
+  background-color: #0a0a0a;
+  color: #e5e2e1;
+}
+
+/* Custom styles */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.glass-panel {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(250, 249, 245, 0.1);
+}
+
+.tech-border {
+  border: 1px solid rgba(250, 249, 245, 0.1);
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #131313;
+}
+::-webkit-scrollbar-thumb {
+  background: #353534;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #54433e;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+
