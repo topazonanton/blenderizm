@@ -1,5 +1,8 @@
 import { Project, SpecItem } from './types';
 
+import smartPlanterImg from './assets/images/smart_planter_render_1782671885923.jpg';
+import tacticalDroneImg from './assets/images/tactical_drone_render_1782671902576.jpg';
+
 export const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3hdQjvR80yu8c--ZAooaysWTu4MU-RL0wKsZ9u2aycYWD9T2HSTb5uu6MeW6bPe7IQUqP7Th0hwyD6ZocBZRazBhWaHfJAeM9tNoLD01Ay4twe_RX5XmDLPxEurUBjD35QA_6OuqYUeuyhmQF14vhwYJnaAWSGFNCzL1pfZRvJjyoWXjWamEz-byQ-J3uMjk_yW-i5Uy1nbDS2YANE7dRqXFPqurW3Kt8Yv7xGSJaXHFzxJ2GV_qpitaLsarkdT6HAg1wgjOQvTk=s0';
 
 export const PROJECTS: Project[] = [
@@ -7,7 +10,7 @@ export const PROJECTS: Project[] = [
     id: 'smart-planter',
     title: 'Smart Planter Humidifier',
     category: 'rendering',
-    imageUrl: '/src/assets/images/smart_planter_render_1782671885923.jpg',
+    imageUrl: smartPlanterImg,
     description: 'An elegant smart home device merging nature with modern product design. Features precise fluted oak siding, dual-well water monitoring, and custom-designed monstera plant geometry.',
     software: ['Blender', 'Substance Painter', 'V-Ray'],
     specs: {
@@ -21,7 +24,7 @@ export const PROJECTS: Project[] = [
     id: 'tactical-drone',
     title: 'FPV Tactical Strike Drone',
     category: 'modeling',
-    imageUrl: '/src/assets/images/tactical_drone_render_1782671902576.jpg',
+    imageUrl: tacticalDroneImg,
     description: 'A fully realized tactical FPV quadcopter. Built with accurate mechanical carbon-fiber plates, industrial straps, a high-capacity modular battery pack, and high-fidelity projectile payload geometry.',
     software: ['Blender', 'Substance Painter', 'Photoshop'],
     specs: {
