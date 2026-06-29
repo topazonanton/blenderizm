@@ -474,7 +474,7 @@ export default function App() {
             <div className="absolute inset-0 bg-industrial-orange/5 blur-[120px] rounded-full pointer-events-none" />
             <CompareSlider 
               leftImage={PROJECTS[1].imageUrl}
-              rightImage={PROJECTS[1].imageUrl}
+              rightImage={PROJECTS[1].wireframeUrl || PROJECTS[1].imageUrl}
               leftLabel="Textured render"
               rightLabel="Blender Solid View"
               title="FPV Drone Sub-Assembly"

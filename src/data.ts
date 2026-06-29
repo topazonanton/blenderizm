@@ -25,6 +25,9 @@ export const PROJECTS: Project[] = [
     title: 'FPV Tactical Strike Drone',
     category: 'modeling',
     imageUrl: tacticalDroneImg,
+    // Optional solid/wireframe view: add `src/assets/images/tactical_drone_solid.jpg` to the repo
+    // or place the file at `/blenderizm/assets/tactical_drone_solid.jpg` on the published site.
+    wireframeUrl: '/blenderizm/assets/tactical_drone_solid.jpg',
     description: 'A fully realized tactical FPV quadcopter. Built with accurate mechanical carbon-fiber plates, industrial straps, a high-capacity modular battery pack, and high-fidelity projectile payload geometry.',
     software: ['Blender', 'Substance Painter', 'Photoshop'],
     specs: {
