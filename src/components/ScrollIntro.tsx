@@ -5,45 +5,49 @@ const STEP = 2; // play every 2nd frame
 const MAX_DISPLAY_FRAMES = 80; // stop at this many stepped frames
 const PAD = (n: number) => String(n).padStart(5, '0');
 
+const frameModules = import.meta.glob('../../frames/*.jpg', { eager: true, as: 'url' }) as Record<string, string>;
+
 export default function ScrollIntro() {
   const [currentIdx, setCurrentIdx] = useState(0);
-  const framesRef = useRef<string[]>([]);
+
+  const frames = React.useMemo(() => {
+    return Object.entries(frameModules)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([, url]) => url)
+      .slice(0, MAX_DISPLAY_FRAMES);
+  }, []);
 
   // accumulator-based scrubbing
   const scrollAccumulator = useRef(0);
   const PIXELS_PER_FRAME = 40; // adjust sensitivity
 
   useEffect(() => {
-    // Build and preload stepped frame URLs, but stop at MAX_DISPLAY_FRAMES.
-    const frames: string[] = [];
-    const base = import.meta.env.BASE_URL || '/';
-    for (let i = 1; i <= TOTAL_FRAMES && frames.length < MAX_DISPLAY_FRAMES; i += STEP) {
-      frames.push(`${base}frames/${PAD(i)}.jpg`);
-    }
-    framesRef.current = frames;
-
     frames.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
-  }, []);
+  }, [frames]);
+
+  useEffect(() => {
+    if (currentIdx >= frames.length && frames.length > 0) {
+      setCurrentIdx(0);
+    }
+  }, [frames, currentIdx]);
 
   useEffect(() => {
     let touchStartY: number | null = null;
 
-    const maxIdx = () => Math.max(0, Math.min(MAX_DISPLAY_FRAMES - 1, framesRef.current.length - 1));
+    const maxIdx = () => Math.max(0, Math.min(MAX_DISPLAY_FRAMES - 1, frames.length - 1));
     const clamp = (n: number) => Math.max(0, Math.min(n, maxIdx()));
 
     const onWheel = (e: WheelEvent) => {
-      if (window.scrollY > 10) return;
+      if (!frames.length || window.scrollY > 10) return;
       e.preventDefault();
       document.body.style.overflow = 'hidden';
       scrollAccumulator.current += e.deltaY;
       const idx = clamp(Math.round(scrollAccumulator.current / PIXELS_PER_FRAME));
       setCurrentIdx(idx);
-      // snap accumulator to current frame to avoid drift
       scrollAccumulator.current = idx * PIXELS_PER_FRAME;
-      // if user scrolls past last frame, release native scroll
       if (idx === maxIdx() && e.deltaY > 0) {
         document.body.style.overflow = '';
         window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
@@ -82,9 +86,9 @@ export default function ScrollIntro() {
       window.removeEventListener('touchmove', onTouchMove, { capture: true } as any);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [frames]);
 
-  const src = framesRef.current[currentIdx];
+  const src = frames[currentIdx];
 
   // Fade out as user scrolls past the first viewport
   const opacity = (() => {
@@ -145,8 +149,8 @@ export default function ScrollIntro() {
           fontWeight: 700,
         }}
       >
-        {framesRef.current.length > 0 ? `${String(currentIdx + 1).padStart(2, '0')} / ${String(
-          framesRef.current.length
+        {frames.length > 0 ? `${String(currentIdx + 1).padStart(2, '0')} / ${String(
+          frames.length
         ).padStart(2, '0')}` : `00 / ${String(MAX_DISPLAY_FRAMES).padStart(2, '0')}`}
       </div>
     </>
