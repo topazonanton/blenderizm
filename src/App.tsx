@@ -296,6 +296,25 @@ export default function App() {
                   </span>
                 ))}
               </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="https://www.upwork.com/freelancers/~01f5c09465b2df56f2?mp_source=share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-industrial-orange px-5 py-3 text-sm font-semibold text-black transition hover:bg-orange-500"
+                >
+                  Hire on Upwork
+                </a>
+                <a
+                  href="https://freelancehunt.com/freelancer/topazonanton.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Hire on FreelanceHunt
+                </a>
+              </div>
             </motion.div>
 
             {/* Scroll Indicator */}
