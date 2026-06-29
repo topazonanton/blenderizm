@@ -6,6 +6,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/remix_-blenderizm/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

@@ -16,8 +16,9 @@ export default function ScrollIntro() {
   useEffect(() => {
     // Build and preload stepped frame URLs, but stop at MAX_DISPLAY_FRAMES.
     const frames: string[] = [];
+    const base = import.meta.env.BASE_URL || '/';
     for (let i = 1; i <= TOTAL_FRAMES && frames.length < MAX_DISPLAY_FRAMES; i += STEP) {
-      frames.push(`/frames/${PAD(i)}.jpg`);
+      frames.push(`${base}frames/${PAD(i)}.jpg`);
     }
     framesRef.current = frames;
 
